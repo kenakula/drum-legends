@@ -1,0 +1,24 @@
+.button {
+  $c: &;
+
+  @include button-reset;
+  @include transition(box-shadow);
+  min-height: 35px;
+  padding: 0 10px;
+  border-radius: 8px;
+  box-shadow: $shadow1;
+  font-weight: 500;
+
+  &:hover {
+    box-shadow: $shadow1-hover;
+  }
+
+  &:active {
+    box-shadow: none;
+  }
+
+  &--primary {
+    background-color: $color-blue;
+    color: $color-white;
+  }
+}

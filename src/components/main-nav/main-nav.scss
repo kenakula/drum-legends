@@ -1,0 +1,24 @@
+.main-nav {
+  $c: &;
+
+  &__list {
+    @include list-reset;
+    display: none;
+    gap: 20px;
+    align-items: center;
+
+    li {
+      a {
+        @include interactive-opacity;
+        font-size: 16px;
+        line-height: 20px;
+        font-weight: 500;
+
+        @include min-tablet {
+          font-size: 18px;
+          line-height: 22px;
+        }
+      }
+    }
+  }
+}

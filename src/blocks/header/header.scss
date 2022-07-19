@@ -1,3 +1,40 @@
 .header {
-  background: lightblue;
+  $c: &;
+
+  &__inner {
+    display: flex;
+    align-items: center;
+    min-height: 80px;
+  }
+
+  &__logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+    margin-right: 20px;
+  }
+
+  &__title {
+    display: none;
+    margin-right: auto;
+    font-family: $font-title;
+    font-size: 22px;
+    line-height: 26px;
+    font-weight: 700;
+
+    @include min-tablet {
+      display: block;
+      font-size: 28px;
+      line-height: 32px;
+    }
+  }
+
+  &__button {
+    margin: 0 20px 0 auto;
+
+    @include min-tablet {
+      margin: 0 0 0 30px;
+    }
+  }
 }

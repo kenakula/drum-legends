@@ -1,9 +1,10 @@
 mixin header(isMainPage)
+  - // TODO логотип плохого качества
 
   header.header&attributes(attributes)
     .header__inner.container
-      if isMainPage
-        a(href="index.html") на главную
-      else
-        a лого
-      +mainNav({links: [{url: '#', name: 'link'}, {url: '#', name: 'link2'}, {url: '#', name: 'link3'}]})
+      span.header__logo
+        +img({path: '', image: 'logo', format: 'png', width: 100, height: 28})
+      span.header__title(role="presentation") Drum Legends
+      button.button.button--primary.header__button Записаться
+      +mainNav({links: [{url: '#', name: 'Легенды'}, {url: '#', name: 'Записаться'}, {url: '#', name: 'Отзывы'}]})

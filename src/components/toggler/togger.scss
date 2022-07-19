@@ -5,7 +5,7 @@
 
   position: relative;
   z-index: 100;
-  display: none;
+  display: flex;
   justify-content: center;
   align-items: center;
   width: 32px;
@@ -21,7 +21,7 @@
     width: 22px;
     height: 2px;
     border-radius: 2px;
-    background-color: $color-white;
+    background-color: $color-black;
     transition: transform $default-transition-settings, background $default-transition-settings;
 
     &::before,
@@ -32,7 +32,7 @@
       width: 100%;
       height: 2px;
       border-radius: 2px;
-      background-color: $color-white;
+      background-color: $color-black;
       transition: transform $default-transition-settings;
     }
 
@@ -46,7 +46,7 @@
   }
 
   @include min-tablet {
-    display: flex;
+    display: none;
   }
 
   &--close {
