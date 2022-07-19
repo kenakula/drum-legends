@@ -1,7 +1,7 @@
 {
-  "name": "frontend boilerplate",
+  "name": "drum legends",
   "start_url": ".",
-  "short_name": "boiler",
+  "short_name": "drum legend",
   "icons": [
     {
       "src": "favicons/mstile-150x150.png",

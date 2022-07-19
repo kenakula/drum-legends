@@ -1,13 +1,15 @@
 include mixins
 
+  - // TODO описание и ключи
+  - // TODO цвет темы, изображение для og
+  - // TODO фавиконки
 block data
-  - const title = 'Document';
-  - const pageDescription = 'Page description';
+  - const title = 'Drum Legends | Проект ШУМ-Corp';
+  - const pageDescription = 'Обучение игре на барабанах в СПБ в удобное для вас время. Наша с вами задача – в результате обучения игре на барабанах начать играть в музыкальной группе всего через 3 месяца. Уроки игры на барабанах в центре Санкт-Петербурга в удобное для вас время в приятном и удобном месте';
+  - const keys = 'обучение игре на барабанах, школа барабанов, ударная установка, уроки в СПБ, Санкт-Петербург, уроки игры на барабанах, уроки игры на ударной установке, уроки игры на ударных, музыкальная школа, барабаны, ударные Игра на барабанах , курсы игры на барабанах , барабанная школа , барабаны играть , школа барабанщиков ,  уроки игры на барабанах , как научиться играть на барабанах  , уроки на барабанах  , игра свидание стеллы  , школа ударных  ,  обучение игре на барабанах  , обучение ударные  , уроки ударных  , игры гонки форсаж  , обучение игре на ударных  , игра на ударных  , как научиться играть на ударных, уроки барабанов спб , уроки игры на барабанах спб , игра на барабанах спб , детский барабан спб , барабан детский купить спб , барабаны обучение спб , детские барабаны купить в спб , аренда барабанов спб , курсы игры на барабанах спб , курсы барабанов в спб , поиграть +на барабанах в спб , ударная установка спб , ударная установка купить спб , школа ударных спб , магазин ударных инструментов спб , купить пэд спб , магазин музыкальных инструментов ударных спб , музыкальная школа в центре питера'
 
 block variables
   - const pageLang = 'ru';
-  - const title = 'Document';
-  - const pageDescription = 'Page description';
 
 doctype html
 html(class="no-js" lang=pageLang)
@@ -23,34 +25,31 @@ html(class="no-js" lang=pageLang)
     meta(content="notranslate", name="google")
     //- генерируйте favicon тут - https://realfavicongenerator.net/
     //- в подключение фавикон манифеста обязательно добавьте строчки crossorigin='use-credentials'
-    link(rel="apple-touch-icon" sizes="180x180" href="/favicons/apple-touch-icon.png")
-    link(rel="icon" type="image/png" sizes="32x32" href="/favicons/favicon-32x32.png")
-    link(rel="icon" type="image/png" sizes="16x16" href="/favicons/favicon-16x16.png")
-    link(rel="manifest" href="site.webmanifest")
-    link(rel="mask-icon" href="/favicons/safari-pinned-tab.svg" color="#5bbad5")
     link(rel="shortcut icon" href="/favicons/favicon.ico")
     meta(name="msapplication-TileColor" content="#2d89ef")
-    meta(name="msapplication-config" content="browserconfig.xml")
     meta(name="theme-color" content="#ffffff")
     //-
     meta(http-equiv="X-UA-Compatible", content="ie=edge")
-    meta(name="title" content="Meta Tags — Preview, Edit and Generate")
+    meta(name="title" content=title)
     meta(name="description", content=pageDescription)
+    meta(name="keywords", content=keys)
 
     //- Open Graph / Facebook
     meta(property="og:type" content="website")
-    meta(property="og:url" content="https://metatags.io/")
-    meta(property="og:title" content="Meta Tags — Preview, Edit and Generate")
-    meta(property="og:description" content="With Meta Tags you can edit and experiment with your content then preview how your webpage will look on Google, Facebook, Twitter and more!")
+    meta(property="og:url" content="https://drum-legends.ru/")
+    meta(property="og:title" content=title)
+    meta(property="og:description" content=pageDescription)
     meta(property="og:image" content="favicons/mstile-150x150.png")
 
     //- Twitter
     meta(property="twitter:card" content="summary_large_image")
-    meta(property="twitter:url" content="https://metatags.io/")
-    meta(property="twitter:title" content="Meta Tags — Preview, Edit and Generate")
-    meta(property="twitter:description" content="With Meta Tags you can edit and experiment with your content then preview how your webpage will look on Google, Facebook, Twitter and more!")
+    meta(property="twitter:url" content="https://drum-legends.ru/")
+    meta(property="twitter:title" content=title)
+    meta(property="twitter:description" content=pageDescription)
     meta(property="twitter:image" content="favicons/mstile-150x150.png")
 
+    link(rel="preload" href="./fonts/OpenSans-regular.woff2" as="font")
+    link(rel="preload" href="./fonts/BebasNeueCyrillic-bold.woff2" as="font")
     link(rel="stylesheet", href="css/style.min.css")
   body
     noscript У вас отключен JavaScript. Это пугает.
