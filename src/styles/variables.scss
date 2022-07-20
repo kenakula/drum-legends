@@ -29,6 +29,11 @@ $shadow1-hover: 0 2px 7px
     $color: $color-black,
     $alpha: 0.5,
   );
+$shadow2: 0 5px 5px
+  rgba(
+    $color: $color-black,
+    $alpha: 0.3,
+  );
 
 // Animation
 //---------------------------------

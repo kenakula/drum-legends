@@ -3,20 +3,57 @@
 
   &__list {
     @include list-reset;
-    display: none;
-    gap: 20px;
+    position: absolute;
+    left: 0;
+    top: 100%;
+    display: flex;
+    opacity: 0;
+    transform: translateY(-100%);
+    flex-direction: column;
     align-items: center;
+    gap: 20px;
+    padding: 20px 0;
+    width: 100vw;
+    background-color: $color-white;
+    box-shadow: $shadow2;
+    transition: all $default-transition-settings;
+    transform-origin: top;
 
     li {
       a {
         @include interactive-opacity;
         font-size: 16px;
         line-height: 20px;
-        font-weight: 500;
+        font-weight: 600;
 
         @include min-tablet {
           font-size: 18px;
           line-height: 22px;
+        }
+      }
+    }
+  }
+
+  &.active {
+    #{$c}__list {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @include min-tablet {
+    &__list {
+      position: static;
+      flex-direction: row;
+      padding: 0;
+      opacity: 1;
+      transform: none;
+      width: auto;
+      box-shadow: none;
+
+      li {
+        a {
+          font-weight: 500;
         }
       }
     }
