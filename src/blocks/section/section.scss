@@ -1,3 +1,46 @@
 .section {
   padding: 20px 0;
+
+  &__description {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    h2 {
+      @include font(32, 40);
+      margin: 0 0 20px 0;
+      font-family: $font-title;
+      font-weight: 700;
+      text-align: center;
+
+      @include min-tablet {
+        @include font(42, 50);
+        margin-bottom: 40px;
+      }
+
+      @include min-desktop {
+        @include font(52, 60);
+        margin-bottom: 60px;
+      }
+    }
+
+    p {
+      @include font(20, 28);
+      margin: 0;
+      text-align: center;
+
+      @include min-laptop {
+        margin: 0 auto;
+        max-width: 70%;
+      }
+    }
+  }
+
+  @include min-tablet {
+    padding: 60px 0;
+  }
+
+  &--light {
+    background-color: $color-light;
+  }
 }

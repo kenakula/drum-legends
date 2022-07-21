@@ -47,7 +47,7 @@ export const initToggler = () => {
       window.addEventListener('resize', watchResize);
     };
 
-    toggleClasses(targetEl, className);
+    toggleClasses(targetEl, className, target);
   };
 
   togglers.forEach(toggler => {

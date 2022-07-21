@@ -14,4 +14,4 @@ mixin mainNav({links})
     ul.main-nav__list
       each item in links
         li
-          a(href=item.url) !{item.name}
+          a(href=`#${item.url}`, data-anchor, data-target-id=item.url) !{item.name}

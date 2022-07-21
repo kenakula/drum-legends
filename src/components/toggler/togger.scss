@@ -4,7 +4,7 @@
   @include button-reset;
 
   position: relative;
-  z-index: 100;
+  z-index: $layer-toggler;
   display: flex;
   justify-content: center;
   align-items: center;

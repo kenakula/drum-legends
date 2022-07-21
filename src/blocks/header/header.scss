@@ -1,11 +1,17 @@
 .header {
   $c: &;
 
+  position: sticky;
+  z-index: $layer-header;
+  left: 0;
+  top: 0;
+  width: 100%;
   box-shadow: 0 2px 3px rgba($color: $color-black, $alpha: 0.3);
+  background-color: $color-white;
 
   &__inner {
     position: relative;
-    z-index: 10;
+    z-index: $layer-basic;
     display: flex;
     align-items: center;
     min-height: 80px;
@@ -16,22 +22,7 @@
     justify-content: center;
     align-items: center;
     flex-shrink: 0;
-    margin-right: 20px;
-  }
-
-  &__title {
-    display: none;
     margin-right: auto;
-    font-family: $font-title;
-    font-size: 22px;
-    line-height: 26px;
-    font-weight: 700;
-
-    @include min-tablet {
-      display: block;
-      font-size: 28px;
-      line-height: 32px;
-    }
   }
 
   &__button {

@@ -3,4 +3,12 @@
   max-width: $desktop;
   margin: 0 auto;
   padding: 0 20px;
+
+  @include min-tablet {
+    padding: 0 40px;
+  }
+
+  @include min-desktop {
+    padding: 0 120px;
+  }
 }

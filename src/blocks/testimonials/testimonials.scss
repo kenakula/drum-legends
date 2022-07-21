@@ -1,0 +1,44 @@
+.testimonials {
+  $c: &;
+
+  &__description {
+    margin-bottom: 80px;
+
+    @include min-tablet {
+      margin-bottom: 120px;
+    }
+  }
+
+  &__list {
+    @include list-reset;
+  }
+
+  &__item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    border-radius: 8px;
+    border: 1px solid rgba($color: $color-black, $alpha: 0.2);
+
+    h3 {
+      @include font(22, 34);
+      margin: 0 0 30px 0;
+    }
+
+    p {
+      @include font(16, 22);
+      margin: 0;
+      text-align: center;
+    }
+
+    @include min-tablet {
+      margin: 0 auto;
+      max-width: 500px;
+    }
+
+    @include min-laptop {
+      max-width: 700px;
+    }
+  }
+}

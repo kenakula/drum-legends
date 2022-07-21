@@ -1,0 +1,115 @@
+@use "sass:math";
+
+.legends {
+  $c: &;
+  $item-width: 250px;
+
+  position: relative;
+
+  &__inner {
+    overflow: hidden;
+  }
+
+  &__container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    min-height: 70vw;
+
+    @media (max-width: 767px) {
+      padding: 40px 0;
+      min-height: auto;
+    }
+  }
+
+  &__snare {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 80vw;
+    max-width: 80vw;
+    transform: translate(-50%, -50%);
+    opacity: 0.5;
+    filter: grayscale(61%) saturate(72%) opacity(43%) contrast(134%);
+    -webkit-filter: grayscale(61%) saturate(72%) opacity(43%) contrast(134%);
+    -moz-filter: grayscale(61%) saturate(72%) opacity(43%) contrast(134%);
+
+    @media (max-width: 767px) {
+      display: none;
+    }
+  }
+
+  &__list {
+    @include list-reset;
+    @include on-circle(6, 50vw, 200px);
+    // position: absolute;
+    // left: 50%;
+    // top: 50%;
+    // transform: translate(-50%, -50%);
+    position: relative;
+    margin: 0 auto;
+
+    @media (max-width: 1439px) {
+      // @include on-circle(6, 60vw, 200px);
+      display: flex;
+      gap: 20px;
+      width: auto;
+      height: auto;
+    }
+  }
+
+  &__item {
+    @include border-radius;
+    @include transition(box-shadow);
+    width: 250px;
+    height: 300px;
+    background-color: $color-white;
+    box-shadow: $shadow3;
+    border-radius: 8px;
+    cursor: pointer;
+
+    &:hover {
+      box-shadow: $shadow3-hover;
+    }
+
+    img {
+      display: block;
+      object-fit: cover;
+    }
+
+    @media (max-width: 1439px) {
+      position: relative;
+      left: initial;
+      top: initial;
+      transform: none !important;
+    }
+  }
+
+  &__caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 0;
+    width: 100%;
+    background-color: $color-white;
+
+    h3 {
+      margin: 0 0 10px 0;
+      text-align: center;
+    }
+
+    p {
+      margin: 0;
+      text-align: center;
+    }
+  }
+}

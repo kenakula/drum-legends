@@ -21,3 +21,9 @@
     @content;
   }
 }
+
+@mixin min-desktop-wide {
+  @media (min-width: $desktop-wide) {
+    @content;
+  }
+}
