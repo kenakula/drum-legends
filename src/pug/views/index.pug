@@ -13,5 +13,4 @@ block main
 
   each item in legendsData
     - const {id, name, team, image, paras} = item;
-
     +modal({modalId: id, title: name, image, paras, team})
