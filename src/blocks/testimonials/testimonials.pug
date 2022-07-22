@@ -1,13 +1,25 @@
 mixin testimonials()
 
-  section.section.testimonials&attributes(attributes)
+  section.section.testimonials#testimonials&attributes(attributes)
     .testimonials__inner.container
       .section__description.testimonials__description
         h2 Люди о нас
         p Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci animi assumenda obcaecati similique minima, debitis, consequuntur at vero fugit nihil nat
 
       .testimonials__container
-        ul.testimonials__list
-          li.testimonials__item
-            h3.testimonials__author Author Author
-            p.testimonials__text Lorem ipsum, dolor sit amet consectetur adipisicing elit. Illo id rerum deserunt iure libero enim laudantium perspiciatis fugit in debitis error reiciendis dolore facilis animi quam fuga dolorum commodi, itaque earum reprehenderit qui. Nam, dignissimos?
+        .swiper.testimonials__slider(data-slider-testimonials)
+          ul.testimonials__list.swiper-wrapper
+            li.testimonials__item.swiper-slide
+              h3.testimonials__author Author Author
+              p.testimonials__text Lorem ipsum, dolor sit amet consectetur adipisicing elit. Illo id rerum deserunt iure libero enim laudantium perspiciatis fugit in debitis error reiciendis dolore facilis animi quam fuga dolorum commodi, itaque earum reprehenderit qui. Nam, dignissimos?
+            li.testimonials__item.swiper-slide
+              h3.testimonials__author Author Author
+              p.testimonials__text Lorem ipsum, dolor sit amet consectetur adipisicing elit. Illo id rerum deserunt iure libero enim laudantium perspiciatis fugit in debitis error reiciendis dolore facilis animi quam fuga dolorum commodi, itaque earum reprehenderit qui. Nam, dignissimos?
+            li.testimonials__item.swiper-slide
+              h3.testimonials__author Author Author
+              p.testimonials__text Lorem ipsum, dolor sit amet consectetur adipisicing elit. Illo id rerum deserunt iure libero enim laudantium perspiciatis fugit in debitis error reiciendis dolore facilis animi quam fuga dolorum commodi, itaque earum reprehenderit qui. Nam, dignissimos?
+          .swiper-pagination.testimonials__pagination
+          .swiper-button-prev.testimonials__btn.testimonials__btn--prev#button-prev
+            +icon({name: 'icon-arrow-right', width: 20, height: 20})
+          .swiper-button-next.testimonials__btn.testimonials__btn--next#button-next
+            +icon({name: 'icon-arrow-right', width: 20, height: 20})

@@ -47,6 +47,22 @@ export const initToggler = () => {
       window.addEventListener('resize', watchResize);
     };
 
+    const onAnchorClickCloseMenu = (evt, nav, className, toggler) => {
+      const anchor = evt.target.closest('[data-anchor]');
+
+      if (!anchor) {
+        return;
+      }
+
+      nav.classList.remove(className);
+      toggler.classList.remove(SWITCHABLE_TOGGLER_CLASS);
+      window.removeEventListener('resize', watchResize);
+    };
+
+    targetEl.addEventListener('click', evt => {
+      onAnchorClickCloseMenu(evt, targetEl, className, target);
+    });
+
     toggleClasses(targetEl, className, target);
   };
 

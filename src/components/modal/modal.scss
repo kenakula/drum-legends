@@ -1,0 +1,125 @@
+.modal {
+  $c: &;
+
+  &__wrap {
+    padding: 0 20px;
+  }
+
+  &__window {
+    width: 100%;
+    border-radius: 10px;
+    transform: scale(1);
+    background: $color-white;
+
+    @include min-laptop {
+      width: 70%;
+    }
+
+    @include min-desktop {
+      width: 50%;
+    }
+  }
+
+  &__header {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 40px;
+    color: $color-black;
+
+    h3 {
+      @include font(28, 34);
+
+      margin: 0;
+    }
+
+    p {
+      margin: 0;
+    }
+  }
+
+  &__close {
+    @include button-reset;
+
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: $color-black;
+
+    &:focus {
+      outline: none;
+    }
+
+    &:focus-visible::before {
+      outline: 1px solid rgba($color: $color-white, $alpha: 0.4);
+    }
+
+    &::before {
+      @include pseudo;
+
+      left: -10px;
+      top: -10px;
+      bottom: -10px;
+      right: -10px;
+    }
+
+    svg {
+      display: block;
+    }
+
+    @include min-tablet {
+      @include interactive-opacity;
+    }
+
+    @include min-laptop {
+      right: -40px;
+      top: 15px;
+      color: $color-white;
+    }
+  }
+
+  &__content {
+    padding: 20px;
+    max-height: 70vh;
+    overflow-y: auto;
+    color: $color-black;
+
+    &::-webkit-scrollbar {
+      width: 10px;
+    }
+
+    &::-webkit-scrollbar-track {
+      background-color: $color-white;
+      border-radius: 20px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: rgba($color: $color-black, $alpha: 0.2);
+      border-radius: 20px;
+    }
+
+    @include min-tablet {
+      display: flex;
+      align-items: flex-start;
+    }
+  }
+
+  &__image {
+    flex-shrink: 0;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+
+    @include min-tablet {
+      margin-right: 20px;
+    }
+  }
+
+  &__description {
+    p {
+      margin: 0 0 20px 0;
+    }
+  }
+}

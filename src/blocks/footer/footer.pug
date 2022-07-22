@@ -1,4 +1,19 @@
 mixin footer()
 
   footer.footer&attributes(attributes)
-    .footer__inner.container footer
+    .footer__inner.container
+      span.footer__logo Drum Legends
+      ul.footer__links
+        li
+          a(href="#") Ссылка на что-то
+        li
+          a(href="#") Ссылка на что-то
+        li
+          a(href="#") Ссылка на что-то
+      ul.footer__socials
+        li
+          a(href="#", aria-label="Вконтакте")
+            +icon({name: 'icon-vk', width: 30, height: 30})
+        li
+          a(href="#", aria-label="Инстаграмм")
+            +icon({name: 'icon-insta', width: 30, height: 30})

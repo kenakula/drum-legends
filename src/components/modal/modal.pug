@@ -1,0 +1,20 @@
+- // TODO интерфейс
+
+mixin modal(data)
+  - const {modalId, title, image, paras, team} = data;
+
+  .modal.hystmodal(id=modalId, aria-hidden='true', data-modal)
+    .hystmodal__wrap.modal__wrap
+      .hystmodal__window.modal__window(role='dialog', aria-modal='true', aria-labelledby=`${modalId}-title`)
+        header.modal__header
+          h3(id=`${modalId}-title`) !{title}
+          p !{team}
+          button.modal__close(data-hystclose)
+            +icon({name: 'icon-close', width: 20, height: 20})
+        .modal__content
+          .modal__image
+            img(src=image, alt="")
+          .modal__description
+            each item in paras
+              p !{item}
+

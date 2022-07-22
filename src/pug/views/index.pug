@@ -9,3 +9,9 @@ block main
   +about()
   +legends().section--light#legends
   +testimonials()
+  +contact().section--light
+
+  each item in legendsData
+    - const {id, name, team, image, paras} = item;
+
+    +modal({modalId: id, title: name, image, paras, team})

@@ -1,0 +1,23 @@
+mixin form()
+
+  form.form(action="#" method="POST")&attributes(attributes)
+    .form__row
+      label.form__label(for="nameInput") Имя:
+      input.form__input#nameInput(type="text")
+    .form__row
+      label.form__label(for="phoneInput") Номер телефона:
+      input.form__input#phoneInput(type="tel")
+    .form__row
+      label.form__label(for="emailInput") Почта:
+      input.form__input#emailInput(type="email")
+    .form__row
+      label.form__label(for="text") Ваш комментарий:
+      textarea.form__input.form__comment#text
+    .form__row.form__checkbox-row
+      input.form__checkbox.visually-hidden#privacy(type="checkbox" checked="true")
+      label.form__checkbox-label(for="privacy")
+        span.form__checkmark
+          +icon({name: 'icon-check', width: 15, height: 15})
+        span Вы согласны с&nbsp;
+          a(href="#") пользовательским соглашением
+    button.button.button--primary.form__submit(type="submit") Отправить

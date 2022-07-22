@@ -1,5 +1,6 @@
 export const initScrollTo = () => {
   const anchors = document.querySelectorAll('[data-anchor]');
+  const HEADER_OFFSET = 80;
 
   if (!anchors.length) {
     return;
@@ -18,7 +19,10 @@ export const initScrollTo = () => {
     const el = document.getElementById(targetId);
 
     if (el) {
-      el.scrollIntoView({ block: 'start', behavior: 'smooth' });
+      const yPos =
+        el.getBoundingClientRect().top + window.scrollY - HEADER_OFFSET;
+
+      window.scrollTo({ top: yPos, behavior: 'smooth' });
     }
   };
 

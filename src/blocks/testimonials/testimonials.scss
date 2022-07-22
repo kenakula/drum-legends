@@ -2,11 +2,7 @@
   $c: &;
 
   &__description {
-    margin-bottom: 80px;
-
-    @include min-tablet {
-      margin-bottom: 120px;
-    }
+    margin-bottom: 40px;
   }
 
   &__list {
@@ -31,14 +27,70 @@
       margin: 0;
       text-align: center;
     }
+  }
+
+  &__slider {
+    @include full-width-vw;
+    padding: 0 20px 40px;
 
     @include min-tablet {
-      margin: 0 auto;
-      max-width: 500px;
+      padding: 40px;
     }
 
     @include min-laptop {
-      max-width: 700px;
+      padding: 40px 80px;
+    }
+
+    @include min-laptop-wide {
+      padding: 40px 120px;
+    }
+  }
+
+  &__btn {
+    position: absolute;
+    z-index: $layer-toggler;
+  }
+
+  &__btn {
+    @include transition(box-shadow);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    color: $color-black;
+    border-radius: 50%;
+    box-shadow: $shadow2;
+    background-color: $color-white;
+
+    &:hover {
+      box-shadow: $shadow3;
+    }
+
+    &::after {
+      display: none;
+    }
+
+    &--prev {
+      svg {
+        transform: rotate(180deg);
+      }
+    }
+
+    @include min-laptop {
+      right: 30px;
+      display: flex;
+
+      &--prev {
+        right: auto;
+        left: 30px;
+      }
+    }
+  }
+
+  &__pagination {
+    .swiper-pagination-bullet-active {
+      background-color: $color-blue !important;
     }
   }
 }

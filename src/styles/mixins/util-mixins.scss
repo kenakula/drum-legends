@@ -30,7 +30,7 @@
 }
 
 @mixin button-reset {
-  display: block;
+  display: flex;
   border: none;
   padding: 0;
   background-color: $color-transparent;

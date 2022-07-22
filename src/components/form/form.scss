@@ -1,0 +1,83 @@
+.form {
+  $c: &;
+
+  display: flex;
+  flex-direction: column;
+
+  &__row {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+  }
+
+  &__label {
+    @include font(16, 24);
+    @include interactive-opacity;
+    align-self: flex-start;
+    margin-bottom: 5px;
+    font-weight: 500;
+    cursor: pointer;
+  }
+
+  &__input {
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    min-height: 40px;
+    border: 1px solid rgba($color: $color-black, $alpha: 0.3);
+    border-radius: 8px;
+    background-color: $color-white;
+  }
+
+  &__comment {
+    padding: 20px;
+    min-height: 80px;
+  }
+
+  &__checkbox-label {
+    position: relative;
+    padding-left: 60px;
+    cursor: pointer;
+
+    a {
+      @include interactive-opacity;
+      color: $color-black;
+      text-decoration: underline;
+    }
+  }
+
+  &__checkmark {
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 25px;
+    height: 25px;
+    border: 1px solid rgba($color: $color-black, $alpha: 0.3);
+    border-radius: 8px;
+    transform: translateY(-50%);
+
+    svg {
+      display: none;
+    }
+  }
+
+  &__checkbox-row {
+    margin-bottom: 40px;
+  }
+
+  input[type="checkbox"]:checked + label #{$c}__checkmark svg {
+    display: block;
+  }
+
+  @include min-tablet {
+    margin: 0 auto;
+    max-width: 70%;
+  }
+
+  @include min-desktop {
+    max-width: 50%;
+  }
+}

@@ -1,4 +1,6 @@
 @import "vendor/normalize";
+@import "vendor/hyst-modal";
+@import "vendor/swiper-bundle.min";
 
 @import "variables";
 @import "mixins";
@@ -8,6 +10,8 @@
 @import "global/utils";
 @import "global/animations.scss";
 @import "global/container";
+@import "global/button";
+@import "global/section";
 
 @import "../blocks/**/*.scss";
 @import "../components/**/*.scss";

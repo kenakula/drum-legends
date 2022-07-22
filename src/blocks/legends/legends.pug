@@ -1,3 +1,5 @@
+include ../../data/legends.data.pug
+
 mixin legends()
 
   section.section.legends&attributes(attributes)
@@ -9,34 +11,14 @@ mixin legends()
       .legends__container
         .legends__snare
           +img({path: '', image: 'snare', format: 'png', width: 1200, height: 1200, altText: ''})
-        ul.legends__list
-          li.legends__item
-            .legends__caption
-              h3 Person Person
-              p PersonTeam
-            img(src="https://place-hold.it/250x300", alt="")
-          li.legends__item
-            .legends__caption
-              h3 Person Person
-              p PersonTeam
-            img(src="https://place-hold.it/250x300", alt="")
-          li.legends__item
-            .legends__caption
-              h3 Person Person
-              p PersonTeam
-            img(src="https://place-hold.it/250x300", alt="")
-          li.legends__item
-            .legends__caption
-              h3 Person Person
-              p PersonTeam
-            img(src="https://place-hold.it/250x300", alt="")
-          li.legends__item
-            .legends__caption
-              h3 Person Person
-              p PersonTeam
-            img(src="https://place-hold.it/250x300", alt="")
-          li.legends__item
-            .legends__caption
-              h3 Person Person
-              p PersonTeam
-            img(src="https://place-hold.it/250x300", alt="")
+        .legends__slider.swiper(data-slider-legends)
+          ul.legends__list.swiper-wrapper
+            each item in legendsData
+              - const {id, name, team, image} = item;
+
+              li.legends__item.swiper-slide(data-hystmodal=`#${id}`)
+                .legends__caption
+                  h3 !{name}
+                  p !{team}
+                img(src=image, alt="")
+          .swiper-pagination.legends__pagination
