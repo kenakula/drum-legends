@@ -10,7 +10,7 @@ mixin legends()
 
       .legends__container
         .legends__snare
-          +img({path: '', image: 'snare', format: 'png', width: 1200, height: 1200, altText: ''})
+          +imgNoSrcset({path: '', image: 'snare', format: 'png', width: 1200, height: 1200, altText: ''})
         .legends__slider.swiper(data-slider-legends)
           ul.legends__list.swiper-wrapper
             each item in legendsData
@@ -20,5 +20,5 @@ mixin legends()
                 .legends__caption
                   h3 !{name}
                   p !{team}
-                img(src=image, alt="")
+                img(src=image, alt="", width="250", height="300")
           .swiper-pagination.legends__pagination

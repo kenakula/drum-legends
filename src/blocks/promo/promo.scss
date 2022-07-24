@@ -21,13 +21,18 @@
     }
 
     @include min-laptop {
+      align-items: flex-start;
       width: 50%;
+    }
+
+    @include min-desktop {
+      padding: 0 120px;
     }
   }
 
   &__title {
     @include font(46, 52);
-    margin: auto 0 0 0;
+    margin: 0;
     margin-bottom: 20px;
     font-family: $font-title;
     font-weight: 700;
@@ -43,6 +48,10 @@
     margin: 0;
     max-width: 420px;
     text-align: center;
+
+    @include min-laptop {
+      text-align: left;
+    }
   }
 
   &__image {

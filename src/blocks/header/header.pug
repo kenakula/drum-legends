@@ -4,6 +4,6 @@ mixin header(isMainPage)
   header.header(data-header)&attributes(attributes)
     .header__inner.container
       span.header__logo
-        +img({path: '', image: 'logo', format: 'png', width: 100, height: 28})
-      a.button.button--primary.header__button(data-anchor, href="#contact", data-target-id="contact") Записаться
+        +imgNoSrcset({path: '', image: 'logo', format: 'png', width: 100, height: 28, altText: 'Логотип'})
+      //- a.button.button--primary.header__button(data-anchor, href="#contact", data-target-id="contact") Записаться
       +mainNav({links: [{url: 'legends', name: 'Легенды'}, {url: 'testimonials', name: 'Отзывы'}, {url: 'contact', name: 'Записаться'}]})

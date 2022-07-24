@@ -28,4 +28,9 @@ export const initLegendsSlider = () => {
   }, 300);
 
   window.addEventListener('resize', resizeWatcher);
+  document.addEventListener('DOMContentLoaded', () => {
+    noSliderBreakpoint.matches
+      ? legendsSliderInst.destroy(true, true)
+      : (legendsSliderInst = new Swiper(legendsSlider, options));
+  });
 };

@@ -14,6 +14,12 @@ mixin img({path, image, format, width, height, altText})
     height= height,
     alt= altText)
 
+mixin imgNoSrcset({path, image, format, width, height, altText})
+  img(src= `img/${path}${image}.${format}`,
+    width= width,
+    height= height,
+    alt= altText)
+
 mixin imgSvg({path, image, width, height, altText})
   img(src= `img/${path}${image}.svg`,
     width= width,

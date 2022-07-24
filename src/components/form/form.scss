@@ -4,6 +4,36 @@
   display: flex;
   flex-direction: column;
 
+  &__success-message {
+    display: none;
+    position: relative;
+    margin: 0 auto 20px;
+    padding: 10px;
+    border: 2px solid rgba($color: $color-green, $alpha: 0.8);
+    border-radius: 10px;
+    text-align: center;
+
+    button {
+      @include button-reset;
+      position: absolute;
+      right: 5px;
+      top: 5px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 20px;
+      height: 20px;
+    }
+
+    &.active {
+      display: block;
+    }
+
+    @include min-tablet {
+      padding: 20px;
+    }
+  }
+
   &__row {
     display: flex;
     flex-direction: column;
@@ -27,6 +57,19 @@
     border: 1px solid rgba($color: $color-black, $alpha: 0.3);
     border-radius: 8px;
     background-color: $color-white;
+
+    &:focus {
+      outline: none;
+      border: 2px solid rgba($color: $color-black, $alpha: 0.7);
+    }
+
+    &--error {
+      border: 2px solid rgba($color: $color-red, $alpha: 0.7);
+    }
+
+    &--success {
+      border: 2px solid rgba($color: $color-green, $alpha: 0.7);
+    }
   }
 
   &__comment {
@@ -70,6 +113,16 @@
 
   input[type="checkbox"]:checked + label #{$c}__checkmark svg {
     display: block;
+  }
+
+  &__error-message {
+    margin-top: 4px;
+    color: $color-red;
+  }
+
+  &__submit {
+    padding: 0 40px;
+    align-self: center;
   }
 
   @include min-tablet {

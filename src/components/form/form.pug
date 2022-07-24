@@ -1,18 +1,19 @@
 mixin form()
 
-  form.form(action="#" method="POST")&attributes(attributes)
+  form.form(action="#" method="POST" data-form)&attributes(attributes)
+    .form__success-message(data-success)
+      button(type="button", data-close, aria-label="Закрыть сообщение об успехе отправки формы")
+        +icon({name: 'icon-close', width: 10, height: 10})
+      p Заявка успешно отправлена. В скором времени с вами свяжутся.
     .form__row
-      label.form__label(for="nameInput") Имя:
-      input.form__input#nameInput(type="text")
+      label.form__label(for="name") Имя:
+      input.form__input#name(type="text" name="name")
     .form__row
-      label.form__label(for="phoneInput") Номер телефона:
-      input.form__input#phoneInput(type="tel")
+      label.form__label(for="phone") Номер телефона:
+      input.form__input#phone(type="tel" name="phone")
     .form__row
-      label.form__label(for="emailInput") Почта:
-      input.form__input#emailInput(type="email")
-    .form__row
-      label.form__label(for="text") Ваш комментарий:
-      textarea.form__input.form__comment#text
+      label.form__label(for="comment") Ваш комментарий:
+      textarea.form__input.form__comment#comment(name="comment")
     .form__row.form__checkbox-row
       input.form__checkbox.visually-hidden#privacy(type="checkbox" checked="true")
       label.form__checkbox-label(for="privacy")
