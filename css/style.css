@@ -1406,7 +1406,7 @@ svg:not(:root) {
   box-shadow: none;
 }
 .button--primary {
-  background-color: #007aff;
+  background-color: #2a73c3;
   color: #fcfcfc;
 }
 
@@ -1433,7 +1433,7 @@ svg:not(:root) {
   text-align: center;
 }
 .section--light {
-  background-color: #f7f7f2;
+  background-color: #fdfffc;
 }
 
 .contact__description {
@@ -1596,7 +1596,7 @@ svg:not(:root) {
   text-align: center;
 }
 .legends__pagination .swiper-pagination-bullet-active {
-  background-color: #007aff !important;
+  background-color: #2a73c3 !important;
 }
 
 .promo {
@@ -1618,7 +1618,7 @@ svg:not(:root) {
 .promo__title {
   font-size: 2.875rem;
   line-height: 3.25rem;
-  margin: auto 0 0 0;
+  margin: 0;
   margin-bottom: 20px;
   font-family: "Oswald", "Montserrat", sans-serif;
   font-weight: 700;
@@ -1704,12 +1704,39 @@ svg:not(:root) {
           transform: rotate(180deg);
 }
 .testimonials__pagination .swiper-pagination-bullet-active {
-  background-color: #007aff !important;
+  background-color: #2a73c3 !important;
 }
 
 .form {
   display: flex;
   flex-direction: column;
+}
+.form__success-message {
+  display: none;
+  position: relative;
+  margin: 0 auto 20px;
+  padding: 10px;
+  border: 2px solid rgba(76, 159, 112, 0.8);
+  border-radius: 10px;
+  text-align: center;
+}
+.form__success-message button {
+  display: flex;
+  border: none;
+  padding: 0;
+  background-color: rgba(255, 255, 255, 0);
+  cursor: pointer;
+  position: absolute;
+  right: 5px;
+  top: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 20px;
+  height: 20px;
+}
+.form__success-message.active {
+  display: block;
 }
 .form__row {
   display: flex;
@@ -1740,6 +1767,16 @@ svg:not(:root) {
   border: 1px solid rgba(55, 57, 58, 0.3);
   border-radius: 8px;
   background-color: #fcfcfc;
+}
+.form__input:focus {
+  outline: none;
+  border: 2px solid rgba(55, 57, 58, 0.7);
+}
+.form__input--error {
+  border: 2px solid rgba(249, 87, 56, 0.7);
+}
+.form__input--success {
+  border: 2px solid rgba(76, 159, 112, 0.7);
 }
 .form__comment {
   padding: 20px;
@@ -1784,6 +1821,15 @@ svg:not(:root) {
 }
 .form input[type=checkbox]:checked + label .form__checkmark svg {
   display: block;
+}
+.form__error-message {
+  margin-top: 4px;
+  color: #f95738;
+}
+.form__submit {
+  padding: 0 40px;
+  -ms-grid-row-align: center;
+      align-self: center;
 }
 
 .main-nav__list {
@@ -2137,6 +2183,9 @@ svg:not(:root) {
   .testimonials__slider {
     padding: 40px;
   }
+  .form__success-message {
+    padding: 20px;
+  }
   .form {
     margin: 0 auto;
     max-width: 70%;
@@ -2237,7 +2286,11 @@ svg:not(:root) {
     display: none;
   }
   .promo__inner {
+    align-items: flex-start;
     width: 50%;
+  }
+  .promo__text {
+    text-align: left;
   }
   .promo {
     align-items: center;
@@ -2278,6 +2331,9 @@ svg:not(:root) {
     font-size: 3.25rem;
     line-height: 3.75rem;
     margin-bottom: 60px;
+  }
+  .promo__inner {
+    padding: 0 120px;
   }
   .promo__title {
     font-size: 3.5rem;
