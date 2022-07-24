@@ -4,8 +4,8 @@
   "short_name": "drum legend",
   "icons": [
     {
-      "src": "favicons/mstile-150x150.png",
-      "sizes": "270x270",
+      "src": "img/logo.png",
+      "sizes": "482x100",
       "type": "image/png"
     }
   ],
