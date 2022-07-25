@@ -1461,17 +1461,21 @@ svg:not(:root) {
   flex-direction: column;
   align-items: center;
 }
+.footer__col {
+  margin-bottom: 20px;
+}
+.footer__col:last-child {
+  margin-bottom: 0;
+}
 .footer__logo {
   font-size: 1.5rem;
   line-height: 1.875rem;
-  margin-bottom: 20px;
   font-family: "Oswald", "Montserrat", sans-serif;
 }
 .footer__links {
   margin: 0;
   padding: 0;
   list-style: none;
-  margin-bottom: 20px;
 }
 .footer__socials {
   margin: 0;
@@ -1571,6 +1575,7 @@ svg:not(:root) {
   -webkit-transform: translate3d(0, 0, 0);
   -moz-transform: translate3d(0, 0, 0);
   transition: box-shadow 0.2s ease-in;
+  display: flex;
   width: 200px;
   height: 250px;
   background-color: #fcfcfc;
@@ -1581,28 +1586,39 @@ svg:not(:root) {
 .legends__item:hover {
   box-shadow: rgba(38, 57, 77, 0.6) 0px 20px 30px -10px;
 }
-.legends__item img {
+.legends__image {
+  position: relative;
+  width: 100%;
+}
+.legends__image img {
   display: block;
+  width: 100%;
+  height: 100%;
   font-family: "object-fit:cover";
   object-fit: cover;
 }
 .legends__caption {
   position: absolute;
+  z-index: 10;
   bottom: 0;
   left: 0;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 10px 0;
+  padding: 5px 10px;
   width: 100%;
   background-color: #fcfcfc;
 }
 .legends__caption h3 {
-  margin: 0 0 10px 0;
+  font-size: 0.875rem;
+  line-height: 1.125rem;
+  margin: 0 0 5px 0;
   text-align: center;
 }
 .legends__caption p {
+  font-size: 0.75rem;
+  line-height: 1rem;
   margin: 0;
   text-align: center;
 }
@@ -1629,8 +1645,7 @@ svg:not(:root) {
 .promo__title {
   font-size: 2.875rem;
   line-height: 3.25rem;
-  margin: 0;
-  margin-bottom: 20px;
+  margin: 0 0 auto 0;
   font-family: "Oswald", "Montserrat", sans-serif;
   font-weight: 700;
   text-align: center;
@@ -1665,10 +1680,11 @@ svg:not(:root) {
   list-style: none;
 }
 .testimonials__item {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 20px;
+  padding: 20px 20px 30px;
   border-radius: 8px;
   border: 1px solid rgba(55, 57, 58, 0.2);
 }
@@ -1683,10 +1699,21 @@ svg:not(:root) {
   margin: 0;
   text-align: center;
 }
+.testimonials__icon {
+  position: absolute;
+  left: 13px;
+  top: -21px;
+  background-color: #fcfcfc;
+}
+.testimonials__icon svg {
+  width: 50px;
+  height: 50px;
+  opacity: 0.5;
+}
 .testimonials__slider {
   margin-left: calc(-50vw + 50%);
   margin-right: calc(-50vw + 50%);
-  padding: 0 20px 40px;
+  padding: 20px 20px 40px;
 }
 .testimonials__btn {
   position: absolute;
@@ -1828,6 +1855,7 @@ svg:not(:root) {
   display: none;
 }
 .form__checkbox-row {
+  align-items: center;
   margin-bottom: 40px;
 }
 .form input[type=checkbox]:checked + label .form__checkmark svg {
@@ -1959,10 +1987,22 @@ svg:not(:root) {
   border-radius: 20px;
 }
 .modal__image {
+  position: relative;
   flex-shrink: 0;
   display: flex;
   justify-content: center;
-  margin-bottom: 20px;
+  margin: 0 0 20px 0;
+}
+.modal__image figcaption {
+  position: absolute;
+  z-index: 10;
+  left: 0;
+  bottom: 0;
+  padding: 10px 20px;
+  width: 100%;
+  text-align: center;
+  background-color: rgba(55, 57, 58, 0.4);
+  color: #fcfcfc;
 }
 .modal__description p {
   margin: 0 0 20px 0;
@@ -2159,10 +2199,7 @@ svg:not(:root) {
     flex-direction: row;
     justify-content: space-between;
   }
-  .footer__logo {
-    margin-bottom: 0;
-  }
-  .footer__links {
+  .footer__col {
     margin-bottom: 0;
   }
   .footer__socials a {
@@ -2190,6 +2227,14 @@ svg:not(:root) {
   }
   .promo__inner {
     padding: 0 40px;
+  }
+  .testimonials__icon {
+    left: 33px;
+    top: -32px;
+  }
+  .testimonials__icon svg {
+    width: 75px;
+    height: 75px;
   }
   .testimonials__slider {
     padding: 40px;
@@ -2230,6 +2275,7 @@ svg:not(:root) {
   }
   .modal__image {
     margin-right: 20px;
+    max-width: 50%;
   }
   .toggler {
     display: none;
@@ -2300,6 +2346,9 @@ svg:not(:root) {
     align-items: flex-start;
     width: 50%;
   }
+  .promo__title {
+    margin-bottom: 20px;
+  }
   .promo__text {
     text-align: left;
   }
@@ -2349,6 +2398,33 @@ svg:not(:root) {
   .promo__title {
     font-size: 3.5rem;
     line-height: 4.125rem;
+  }
+  .testimonials__slider {
+    position: relative;
+  }
+  .testimonials__slider::after {
+    content: "";
+    display: block;
+    position: absolute;
+    position: absolute;
+    z-index: 100;
+    top: 0;
+    right: -10px;
+    bottom: 0;
+    width: 40px;
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0), #fcfcfc);
+  }
+  .testimonials__slider::before {
+    content: "";
+    display: block;
+    position: absolute;
+    position: absolute;
+    z-index: 100;
+    top: 0;
+    left: -10px;
+    bottom: 0;
+    width: 40px;
+    background: linear-gradient(-90deg, rgba(255, 255, 255, 0), #fcfcfc);
   }
   .form {
     max-width: 50%;
