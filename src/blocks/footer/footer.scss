@@ -16,23 +16,25 @@
     }
   }
 
-  &__logo {
-    @include font(24, 30);
+  &__col {
     margin-bottom: 20px;
-    font-family: $font-title;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
 
     @include min-tablet {
       margin-bottom: 0;
     }
   }
 
+  &__logo {
+    @include font(24, 30);
+    font-family: $font-title;
+  }
+
   &__links {
     @include list-reset;
-    margin-bottom: 20px;
-
-    @include min-tablet {
-      margin-bottom: 0;
-    }
   }
 
   &__socials {

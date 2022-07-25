@@ -1,4 +1,5 @@
 import Swiper from 'swiper/bundle';
+import { debounce } from '../../js/utils/debounce';
 
 export const initTestimonialsSlider = () => {
   const testimonialsSlider = document.querySelector(
@@ -29,9 +30,6 @@ export const initTestimonialsSlider = () => {
       },
       1024: {
         spaceBetween: 80,
-      },
-      1280: {
-        spaceBetween: 120,
       },
       1440: {
         slidesPerView: 2.5,

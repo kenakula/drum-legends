@@ -12,5 +12,5 @@ block main
   +contact().section--light
 
   each item in legendsData
-    - const {id, name, team, image, paras} = item;
-    +modal({modalId: id, title: name, image, paras, team})
+    - const {id, name, team, image, paras, caption} = item;
+    +modal({modalId: id, title: name, image, paras, team, caption})

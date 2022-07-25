@@ -32,11 +32,14 @@
 
   &__title {
     @include font(46, 52);
-    margin: 0;
-    margin-bottom: 20px;
+    margin: 0 0 auto 0;
     font-family: $font-title;
     font-weight: 700;
     text-align: center;
+
+    @include min-laptop {
+      margin-bottom: 20px;
+    }
 
     @include min-desktop {
       @include font(56, 66);

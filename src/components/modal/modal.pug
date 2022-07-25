@@ -1,7 +1,7 @@
 - // TODO интерфейс
 
 mixin modal(data)
-  - const {modalId, title, image, paras, team} = data;
+  - const {modalId, title, image, paras, team, caption} = data;
 
   .modal.hystmodal(id=modalId, aria-hidden='true', data-modal)
     .hystmodal__wrap.modal__wrap
@@ -12,8 +12,9 @@ mixin modal(data)
           button.modal__close(data-hystclose)
             +icon({name: 'icon-close', width: 20, height: 20})
         .modal__content
-          .modal__image
-            img(src=image, alt="")
+          figure.modal__image
+            +imgNoSrcset(image)
+            figcaption !{caption}
           .modal__description
             each item in paras
               p !{item}
