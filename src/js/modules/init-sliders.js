@@ -17,12 +17,6 @@ export const initSliders = () => {
   }
 
   sliders.forEach(slider => {
-    const sliderId = slider.id;
-
-    if (!sliderId) {
-      return;
-    }
-
     let destroyBreakpoint = Boolean(slider.dataset.breakpoint)
       ? window.matchMedia(`(min-width: ${slider.dataset.breakpoint}px)`)
       : null;
@@ -62,7 +56,6 @@ export const initSliders = () => {
     const resizeWatcher = debounce(onResize, 300);
 
     window.addEventListener('resize', resizeWatcher);
-    // onResize();
 
     if (destroyBreakpoint.matches) {
       positionLegends(slider);
