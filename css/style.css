@@ -1299,6 +1299,16 @@ svg:not(:root) {
   overflow: hidden;
 }
 
+.swiper-pagination {
+  bottom: 0 !important;
+}
+
+.swiper-pagination-bullet {
+  margin: 0 6px !important;
+  width: 12px;
+  height: 12px;
+}
+
 .visually-hidden {
   position: absolute;
   width: 1px;
@@ -1443,12 +1453,24 @@ svg:not(:root) {
   margin: 0;
   text-align: center;
 }
+.section__content {
+  padding: 20px 0;
+}
+.section__content:empty {
+  padding: 0;
+}
+.section__content img {
+  max-width: 100%;
+}
 .section--light {
   background-color: #fdfffc;
 }
 
 .contact__description {
   margin-bottom: 40px;
+}
+.contact .wpcf7-response-output {
+  display: none;
 }
 
 .footer {
@@ -1537,7 +1559,7 @@ svg:not(:root) {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding-top: 40px;
+  padding-top: 20px;
   width: 100%;
 }
 .legends__snare {
@@ -1575,6 +1597,9 @@ svg:not(:root) {
   -webkit-transform: translate3d(0, 0, 0);
   -moz-transform: translate3d(0, 0, 0);
   transition: box-shadow 0.2s ease-in;
+  position: static;
+  top: 50%;
+  left: 50%;
   display: flex;
   width: 200px;
   height: 250px;
@@ -1582,6 +1607,9 @@ svg:not(:root) {
   box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(55, 57, 58, 0.3) 0px 8px 16px -8px;
   border-radius: 8px;
   cursor: pointer;
+  transition: box-shadow 0.2s ease-in, -webkit-transform 0.2s ease-in;
+  transition: box-shadow 0.2s ease-in, transform 0.2s ease-in;
+  transition: box-shadow 0.2s ease-in, transform 0.2s ease-in, -webkit-transform 0.2s ease-in;
 }
 .legends__item:hover {
   box-shadow: rgba(38, 57, 77, 0.6) 0px 20px 30px -10px;
@@ -1622,7 +1650,7 @@ svg:not(:root) {
   margin: 0;
   text-align: center;
 }
-.legends__pagination .swiper-pagination-bullet-active {
+.legends .swiper-pagination .swiper-pagination-bullet-active {
   background-color: #2a73c3 !important;
 }
 
@@ -1684,7 +1712,8 @@ svg:not(:root) {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 20px 20px 30px;
+  padding: 35px 20px;
+  height: auto;
   border-radius: 8px;
   border: 1px solid rgba(55, 57, 58, 0.2);
 }
@@ -1718,6 +1747,7 @@ svg:not(:root) {
 .testimonials__btn {
   position: absolute;
   z-index: 100;
+  -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
 }
 .testimonials__btn {
   transition: box-shadow 0.2s ease-in;
@@ -1781,6 +1811,13 @@ svg:not(:root) {
   flex-direction: column;
   margin-bottom: 20px;
 }
+.form__row > span {
+  width: 100%;
+}
+.form__row > span input,
+.form__row > span textarea {
+  width: 100%;
+}
 .form__label {
   font-size: 1rem;
   line-height: 1.5rem;
@@ -1820,6 +1857,9 @@ svg:not(:root) {
   padding: 20px;
   min-height: 80px;
 }
+.form__checkbox-row > span {
+  position: absolute;
+}
 .form__checkbox-label {
   position: relative;
   padding-left: 60px;
@@ -1854,19 +1894,28 @@ svg:not(:root) {
 .form__checkmark svg {
   display: none;
 }
+.form__checkmark.active svg {
+  display: block;
+}
 .form__checkbox-row {
   align-items: center;
   margin-bottom: 40px;
-}
-.form input[type=checkbox]:checked + label .form__checkmark svg {
-  display: block;
 }
 .form__error-message {
   margin-top: 4px;
   color: #f95738;
 }
 .form__submit {
+  margin: 0 auto;
   padding: 0 40px;
+  -ms-grid-row-align: center;
+      align-self: center;
+}
+
+.wpcf7-response-output {
+  max-width: 70%;
+  margin: 0 auto !important;
+  border-radius: 8px;
   -ms-grid-row-align: center;
       align-self: center;
 }
@@ -2003,9 +2052,6 @@ svg:not(:root) {
   text-align: center;
   background-color: rgba(55, 57, 58, 0.4);
   color: #fcfcfc;
-}
-.modal__description p {
-  margin: 0 0 20px 0;
 }
 
 .toggler {
@@ -2219,7 +2265,7 @@ svg:not(:root) {
   .legends__slider {
     padding: 20px 40px 50px;
   }
-  .legends__pagination {
+  .legends .swiper-pagination {
     bottom: 0 !important;
   }
   .legends {
@@ -2230,11 +2276,7 @@ svg:not(:root) {
   }
   .testimonials__icon {
     left: 33px;
-    top: -32px;
-  }
-  .testimonials__icon svg {
-    width: 75px;
-    height: 75px;
+    top: -20px;
   }
   .testimonials__slider {
     padding: 40px;
@@ -2269,13 +2311,10 @@ svg:not(:root) {
   .modal__close:active {
     opacity: 0.5;
   }
-  .modal__content {
-    display: flex;
-    align-items: flex-start;
-  }
   .modal__image {
-    margin-right: 20px;
+    margin-right: 40px;
     max-width: 50%;
+    float: left;
   }
   .toggler {
     display: none;
@@ -2296,50 +2335,14 @@ svg:not(:root) {
     overflow: visible;
   }
   .legends__list {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-    position: relative;
-    width: 512px;
-    height: 512px;
-    border-radius: 50%;
     margin: 0 auto;
   }
-  .legends__list > * {
-    display: block;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-  }
-  .legends__list > *:nth-of-type(1) {
-    -webkit-transform: rotate(0deg) translate(256px) rotate(0deg) translate(-50%, -50%);
-            transform: rotate(0deg) translate(256px) rotate(0deg) translate(-50%, -50%);
-  }
-  .legends__list > *:nth-of-type(2) {
-    -webkit-transform: rotate(60deg) translate(256px) rotate(-60deg) translate(-50%, -50%);
-            transform: rotate(60deg) translate(256px) rotate(-60deg) translate(-50%, -50%);
-  }
-  .legends__list > *:nth-of-type(3) {
-    -webkit-transform: rotate(120deg) translate(256px) rotate(-120deg) translate(-50%, -50%);
-            transform: rotate(120deg) translate(256px) rotate(-120deg) translate(-50%, -50%);
-  }
-  .legends__list > *:nth-of-type(4) {
-    -webkit-transform: rotate(180deg) translate(256px) rotate(-180deg) translate(-50%, -50%);
-            transform: rotate(180deg) translate(256px) rotate(-180deg) translate(-50%, -50%);
-  }
-  .legends__list > *:nth-of-type(5) {
-    -webkit-transform: rotate(240deg) translate(256px) rotate(-240deg) translate(-50%, -50%);
-            transform: rotate(240deg) translate(256px) rotate(-240deg) translate(-50%, -50%);
-  }
-  .legends__list > *:nth-of-type(6) {
-    -webkit-transform: rotate(300deg) translate(256px) rotate(-300deg) translate(-50%, -50%);
-            transform: rotate(300deg) translate(256px) rotate(-300deg) translate(-50%, -50%);
-  }
   .legends__item {
+    position: absolute;
     width: 150px;
     height: 200px;
   }
-  .legends__pagination {
+  .legends .swiper-pagination {
     display: none;
   }
   .promo__inner {
@@ -2354,9 +2357,6 @@ svg:not(:root) {
   }
   .promo {
     align-items: center;
-  }
-  .promo .promo__inner {
-    width: 40%;
   }
   .testimonials__slider {
     padding: 40px 80px;
