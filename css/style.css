@@ -1859,6 +1859,7 @@ svg:not(:root) {
 }
 .form__checkbox-row > span {
   position: absolute;
+  width: auto;
 }
 .form__checkbox-label {
   position: relative;

@@ -15582,12 +15582,6 @@ var initSliders = function initSliders() {
   }
 
   sliders.forEach(function (slider) {
-    var sliderId = slider.id;
-
-    if (!sliderId) {
-      return;
-    }
-
     var destroyBreakpoint = Boolean(slider.dataset.breakpoint) ? window.matchMedia("(min-width: ".concat(slider.dataset.breakpoint, "px)")) : null;
     var breakpoints = Boolean(slider.dataset.breakpoints) ? JSON.parse(slider.dataset.breakpoints) : {};
     var options = {
@@ -15625,7 +15619,7 @@ var initSliders = function initSliders() {
     };
 
     var resizeWatcher = debounce(onResize, 300);
-    window.addEventListener('resize', resizeWatcher); // onResize();
+    window.addEventListener('resize', resizeWatcher);
 
     if (destroyBreakpoint.matches) {
       positionLegends(slider);
