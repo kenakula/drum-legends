@@ -1,40 +1,29 @@
-import Swiper from 'swiper/bundle';
-import { debounce } from '../../js/utils/debounce';
+import { Navigation, Pagination } from 'swiper';
 
-export const initTestimonialsSlider = () => {
-  const testimonialsSlider = document.querySelector(
-    '[data-slider-testimonials]',
-  );
-
-  if (!testimonialsSlider) {
-    return;
-  }
-
-  const testimonialsSliderInst = new Swiper(testimonialsSlider, {
-    pagination: {
-      el: '.testimonials__pagination',
-      type: 'bullets',
-      clickable: true,
+export const TESTIMONIALS_SLIDER_OPTIONS = {
+  modules: [Navigation, Pagination],
+  pagination: {
+    el: '.swiper-pagination',
+    clickable: true,
+  },
+  observer: true,
+  observeParents: true,
+  slidesPerView: 1,
+  spaceBetween: 20,
+  navigation: {
+    nextEl: '.swiper-button-next',
+    prevEl: '.swiper-button-prev',
+  },
+  breakpoints: {
+    768: {
+      spaceBetween: 40,
     },
-    observer: true,
-    observeParents: true,
-    slidesPerView: 1,
-    spaceBetween: 20,
-    navigation: {
-      nextEl: '#button-next',
-      prevEl: '#button-prev',
+    1024: {
+      spaceBetween: 80,
     },
-    breakpoints: {
-      768: {
-        spaceBetween: 40,
-      },
-      1024: {
-        spaceBetween: 80,
-      },
-      1440: {
-        slidesPerView: 2.5,
-        spaceBetween: 40,
-      },
+    1440: {
+      slidesPerView: 2.5,
+      spaceBetween: 40,
     },
-  });
+  },
 };

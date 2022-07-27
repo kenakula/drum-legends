@@ -1,36 +1,61 @@
-import Swiper from 'swiper/bundle';
-import { debounce } from '../../js/utils/debounce';
+import { Pagination } from 'swiper';
 
-export const initLegendsSlider = () => {
-  const legendsSlider = document.querySelector('[data-slider-legends]');
+export const LEGENDS_SLIDER_OPTIONS = {
+  modules: [Pagination],
+  observer: true,
+  observeParents: true,
+  pagination: {
+    el: '.swiper-pagination',
+    clickable: true,
+  },
+  slidesPerView: 'auto',
+  spaceBetween: 20,
+};
 
-  if (!legendsSlider) {
+export const positionLegends = container => {
+  const list = container.querySelector('[data-legends-list]');
+
+  if (!list) {
     return;
   }
 
-  const options = {
-    pagination: {
-      el: '.legends__pagination',
-      type: 'bullets',
-      clickable: true,
-    },
-    slidesPerView: 'auto',
-    spaceBetween: 20,
-  };
+  const items = list.querySelectorAll('[data-legends-item]');
+  const itemsCount = items.length;
+  const listWidth = list.dataset.diameter;
 
-  let legendsSliderInst = new Swiper(legendsSlider, options);
-  const noSliderBreakpoint = window.matchMedia('(min-width: 1024px)');
+  if (!itemsCount) {
+    return;
+  }
 
-  const resizeWatcher = debounce(() => {
-    noSliderBreakpoint.matches
-      ? legendsSliderInst.destroy(true, true)
-      : (legendsSliderInst = new Swiper(legendsSlider, options));
-  }, 300);
+  list.style = `width: ${listWidth}px; height: ${listWidth}px;`;
 
-  window.addEventListener('resize', resizeWatcher);
-  document.addEventListener('DOMContentLoaded', () => {
-    noSliderBreakpoint.matches
-      ? legendsSliderInst.destroy(true, true)
-      : (legendsSliderInst = new Swiper(legendsSlider, options));
-  });
+  let angle = 360 / itemsCount;
+  let rotation = 0;
+
+  for (let i = 0; i < itemsCount; i++) {
+    items[i].style = `transform: rotate(${rotation * 1}deg) translate(${
+      listWidth / 2
+    }px) rotate(${rotation * -1}deg) translate(-50%, -50%)`;
+
+    rotation += angle;
+  }
+};
+
+export const clearLegendsPosition = container => {
+  const list = container.querySelector('[data-legends-list]');
+
+  if (!list) {
+    return;
+  }
+
+  list.style = '';
+
+  const items = list.querySelectorAll('[data-legends-item]');
+  const itemsCount = items.length;
+
+  if (!itemsCount) {
+    return;
+  }
+
+  items.forEach(item => (item.style = ''));
 };

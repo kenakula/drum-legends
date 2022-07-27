@@ -11,15 +11,15 @@ mixin legends()
       .legends__container
         .legends__snare
           +imgNoSrcset({path: '', image: 'snare', format: 'png', width: 1200, height: 1200, altText: ''})
-        .legends__slider.swiper(data-slider-legends)
-          ul.legends__list.swiper-wrapper
+        .legends__slider#legends-slider.swiper(data-slider-type="legends" data-slider data-breakpoint="1024")
+          ul.legends__list.swiper-wrapper(data-legends-list, data-diameter="512")
             each item in legendsData
               - const {id, name, team, image} = item;
 
-              li.legends__item.swiper-slide(data-hystmodal=`#${id}`)
+              li.legends__item.swiper-slide(data-hystmodal=`#${id}`, data-legends-item, data-hash=`hash-${id}`)
                 .legends__caption
                   h3 !{name}
                   p !{team}
                 .legends__image
                   +imgNoSrcset(image)
-          .swiper-pagination.legends__pagination
+          .swiper-pagination

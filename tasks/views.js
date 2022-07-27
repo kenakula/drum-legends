@@ -23,13 +23,13 @@ export const views = () =>
     .pipe(pug({ pretty: true, plugins: [pugIncludeGlob()] }))
     .pipe(cached('views'))
     .pipe(debug({ title: 'pages compiled: ' }))
-    .pipe(
-      gulpIf(
-        !isDev,
-        htmlmin(
-          { collapseWhitespace: true },
-          debug({ title: 'html minified' }),
-        ),
-      ),
-    )
+    // .pipe(
+    //   gulpIf(
+    //     !isDev,
+    //     htmlmin(
+    //       { collapseWhitespace: true },
+    //       debug({ title: 'html minified' }),
+    //     ),
+    //   ),
+    // )
     .pipe(dest(BUILD_PATH));

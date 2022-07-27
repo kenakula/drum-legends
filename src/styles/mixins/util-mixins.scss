@@ -244,7 +244,6 @@
 /// @param {Length} $circle-size - Large circle size
 /// @param {Length} $item-size - Single item size
 @mixin on-circle($item-count, $circle-size, $item-size) {
-  @include list-reset;
   position: relative;
   width: $circle-size;
   height: $circle-size;

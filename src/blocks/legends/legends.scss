@@ -15,7 +15,7 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding-top: 40px;
+    padding-top: 20px;
     width: 100%;
 
     @include min-laptop {
@@ -61,7 +61,6 @@
     position: relative;
 
     @include min-laptop {
-      @include on-circle(6, 512px, 200px);
       margin: 0 auto;
     }
   }
@@ -69,6 +68,9 @@
   &__item {
     @include border-radius;
     @include transition(box-shadow);
+    position: static;
+    top: 50%;
+    left: 50%;
     display: flex;
     width: 200px;
     height: 250px;
@@ -76,12 +78,14 @@
     box-shadow: $shadow3;
     border-radius: 8px;
     cursor: pointer;
+    transition: box-shadow $default-transition-settings, transform $default-transition-settings;
 
     &:hover {
       box-shadow: $shadow3-hover;
     }
 
     @include min-laptop {
+      position: absolute;
       width: 150px;
       height: 200px;
     }
@@ -125,7 +129,7 @@
     }
   }
 
-  &__pagination {
+  .swiper-pagination {
     .swiper-pagination-bullet-active {
       background-color: $color-blue !important;
     }

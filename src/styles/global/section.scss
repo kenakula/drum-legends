@@ -36,6 +36,18 @@
     }
   }
 
+  &__content {
+    padding: 20px 0;
+
+    &:empty {
+      padding: 0;
+    }
+
+    img {
+      max-width: 100%;
+    }
+  }
+
   @include min-tablet {
     padding: 60px 0;
   }

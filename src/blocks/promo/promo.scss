@@ -73,9 +73,5 @@
 
   @include min-laptop {
     align-items: center;
-
-    #{$c}__inner {
-      width: 40%;
-    }
   }
 }

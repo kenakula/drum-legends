@@ -1,5 +1,3 @@
-- // TODO интерфейс
-
 mixin modal(data)
   - const {modalId, title, image, paras, team, caption} = data;
 
@@ -15,7 +13,6 @@ mixin modal(data)
           figure.modal__image
             +imgNoSrcset(image)
             figcaption !{caption}
-          .modal__description
-            each item in paras
-              p !{item}
+          each item in paras
+            p !{item}
 

@@ -59,11 +59,7 @@ export const initContactForm = () => {
         errorMessage: 'Необходимо согласие',
       },
     ])
-    .onSuccess(evt => {
-      const data = new FormData(evt.target);
-
-      for (let pair of data.entries()) {
-        console.log(pair[0] + ', ' + pair[1]);
-      }
+    .onSuccess(() => {
+      showSuccesMessage();
     });
 };

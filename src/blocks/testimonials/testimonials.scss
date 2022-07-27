@@ -14,7 +14,8 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 20px 20px 30px;
+    padding: 35px 20px;
+    height: auto;
     border-radius: 8px;
     border: 1px solid rgba($color: $color-black, $alpha: 0.2);
 
@@ -44,12 +45,7 @@
 
     @include min-tablet {
       left: 33px;
-      top: -32px;
-
-      svg {
-        width: 75px;
-        height: 75px;
-      }
+      top: -20px;
     }
   }
 
@@ -99,6 +95,7 @@
   &__btn {
     position: absolute;
     z-index: $layer-toggler;
+    -webkit-tap-highlight-color: $color-transparent;
   }
 
   &__btn {

@@ -99,11 +99,6 @@
       background-color: rgba($color: $color-black, $alpha: 0.2);
       border-radius: 20px;
     }
-
-    @include min-tablet {
-      display: flex;
-      align-items: flex-start;
-    }
   }
 
   &__image {
@@ -126,14 +121,10 @@
     }
 
     @include min-tablet {
-      margin-right: 20px;
+      margin-right: 40px;
       max-width: 50%;
-    }
-  }
 
-  &__description {
-    p {
-      margin: 0 0 20px 0;
+      float: left;
     }
   }
 }

@@ -1,4 +1,17 @@
 mixin testimonials()
+  -
+    const sliderBreakpoints = {
+      768: {
+        spaceBetween: 40,
+      },
+      1024: {
+        spaceBetween: 80,
+      },
+      1440: {
+        slidesPerView: 2.5,
+        spaceBetween: 40,
+      },
+    }
 
   section.section.testimonials#testimonials&attributes(attributes)
     .testimonials__inner.container
@@ -7,7 +20,7 @@ mixin testimonials()
         p Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci animi assumenda obcaecati similique minima, debitis, consequuntur at vero fugit nihil nat
 
       .testimonials__container
-        .swiper.testimonials__slider(data-slider-testimonials)
+        .swiper.testimonials__slider#testimonials-slider(data-slider-type="testimonials" data-slider data-breakpoints=JSON.stringify(sliderBreakpoints))
           ul.testimonials__list.swiper-wrapper
             li.testimonials__item.swiper-slide
               .testimonials__icon
