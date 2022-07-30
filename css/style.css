@@ -1499,6 +1499,21 @@ svg:not(:root) {
   padding: 0;
   list-style: none;
 }
+.footer__tels {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.footer__tels li {
+  margin-bottom: 5px;
+}
+.footer__tels li:last-child {
+  margin-bottom: 0;
+}
+.footer__tels a {
+  font-size: 1.25rem;
+  line-height: 1.5rem;
+}
 .footer__socials {
   margin: 0;
   padding: 0;
