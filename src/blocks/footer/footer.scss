@@ -37,6 +37,22 @@
     @include list-reset;
   }
 
+  &__tels {
+    @include list-reset;
+
+    li {
+      margin-bottom: 5px;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+
+    a {
+      @include font(20, 24);
+    }
+  }
+
   &__socials {
     @include list-reset;
     display: flex;
