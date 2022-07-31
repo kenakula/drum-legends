@@ -4342,6 +4342,211 @@ var initContactForm = function initContactForm() {
     showSuccesMessage();
   });
 };
+;// CONCATENATED MODULE: ./js/utils/debounce.js
+var debounce = function debounce(func, wait, immediate) {
+  var timeout;
+  return function executedFunction() {
+    var context = this;
+    var args = arguments;
+
+    var later = function later() {
+      timeout = null;
+      if (!immediate) func.apply(context, args);
+    };
+
+    var callNow = immediate && !timeout;
+    clearTimeout(timeout);
+    timeout = setTimeout(later, wait);
+    if (callNow) func.apply(context, args);
+  };
+};
+;// CONCATENATED MODULE: ./components/toggler/toggler.js
+
+var SWITCHABLE_TOGGLER_CLASS = 'toggler--close';
+var RESIZE_DEBOUNCE_TIME = 300;
+var initToggler = function initToggler() {
+  var togglers = document.querySelectorAll('[data-toggler]');
+
+  var toggleTargetItem = function toggleTargetItem(evt) {
+    var target = evt.target.closest('[data-toggler]');
+
+    if (!target) {
+      return;
+    }
+
+    var targetId = target.dataset.targetId;
+    var className = target.dataset.targetClassToggle;
+    var targetEl = document.querySelector(".".concat(targetId));
+
+    if (!targetEl) {
+      return;
+    }
+
+    var watchResize = debounce(function () {
+      var windowWidth = window.innerWidth;
+
+      if (windowWidth >= 768) {
+        target.classList.remove(SWITCHABLE_TOGGLER_CLASS);
+        targetEl.classList.remove(className);
+        window.removeEventListener('resize', watchResize);
+      }
+    }, RESIZE_DEBOUNCE_TIME);
+
+    var toggleClasses = function toggleClasses(el, switchableClass) {
+      var isToggled = el.classList.contains(switchableClass);
+
+      if (isToggled) {
+        el.classList.remove(switchableClass);
+        target.classList.remove(SWITCHABLE_TOGGLER_CLASS);
+        return;
+      }
+
+      el.classList.add(switchableClass);
+      target.classList.add(SWITCHABLE_TOGGLER_CLASS);
+      window.addEventListener('resize', watchResize);
+    };
+
+    var onAnchorClickCloseMenu = function onAnchorClickCloseMenu(evt, nav, className, toggler) {
+      var anchor = evt.target.closest('[data-anchor]');
+
+      if (!anchor) {
+        return;
+      }
+
+      nav.classList.remove(className);
+      toggler.classList.remove(SWITCHABLE_TOGGLER_CLASS);
+      window.removeEventListener('resize', watchResize);
+    };
+
+    targetEl.addEventListener('click', function (evt) {
+      onAnchorClickCloseMenu(evt, targetEl, className, target);
+    });
+    toggleClasses(targetEl, className, target);
+  };
+
+  togglers.forEach(function (toggler) {
+    toggler.addEventListener('click', toggleTargetItem);
+  });
+};
+;// CONCATENATED MODULE: ./components/modal/modal.js
+var initModals = function initModals() {
+  var modals = document.querySelectorAll('[data-modal]');
+
+  if (!modals.length) {
+    return;
+  }
+
+  var myModal = new HystModal({
+    linkAttributeName: 'data-hystmodal',
+    waitTransitions: true
+  });
+};
+;// CONCATENATED MODULE: ./components/main-nav/main-nav.js
+var initMainNav = function initMainNav() {
+  var mainNav = document.querySelector('#main-nav');
+  var links = document.querySelectorAll('a[data-target-id]');
+
+  if (!links.length) {
+    return;
+  }
+
+  var options = {
+    root: document.querySelector('#scrollArea'),
+    rootMargin: '0px',
+    threshold: 0.5
+  };
+
+  var turnLinkActive = function turnLinkActive(el) {
+    if (el) {
+      links.forEach(function (link) {
+        return link.classList.remove('active');
+      });
+      el.classList.add('active');
+    }
+  };
+
+  var callback = function callback(entries) {
+    entries.forEach(function (entry) {
+      var sectionId = entry.target.id;
+      var link = mainNav.querySelector("[data-target-id=\"".concat(sectionId, "\"]"));
+
+      if (entry.isIntersecting) {
+        turnLinkActive(link);
+      } else {
+        link.classList.remove('active');
+      }
+    });
+  };
+
+  var observer = new IntersectionObserver(callback, options);
+  var targets = document.querySelectorAll('section[id]');
+
+  if (!targets.length) {
+    return;
+  }
+
+  targets.forEach(function (target) {
+    observer.observe(target);
+  });
+};
+;// CONCATENATED MODULE: ./components/form/form.js
+var initPrivacyCheckbox = function initPrivacyCheckbox() {
+  var checkmark = document.querySelector('[data-checkmark]');
+  var checkbox = document.querySelector('#privacy');
+
+  if (!checkbox || !checkmark) {
+    return;
+  }
+
+  checkbox.addEventListener('change', function (evt) {
+    var checked = evt.target.checked;
+
+    if (checked) {
+      checkmark.classList.add('active');
+    } else {
+      checkmark.classList.remove('active');
+    }
+  });
+  checkbox.checked = true;
+  checkmark.classList.add('active');
+};
+var initForm = function initForm() {
+  var forms = document.querySelectorAll('.contact__form');
+
+  if (!forms.length) {
+    return;
+  }
+
+  var closeSuccessMessage = function closeSuccessMessage(formEl) {
+    var successMessage = formEl.querySelector('[data-success]');
+
+    if (!successMessage) {
+      return;
+    }
+
+    successMessage.classList.remove('active');
+  };
+
+  forms.forEach(function (form) {
+    var closeSuccessBtn = form.querySelector('[data-close]');
+
+    if (closeSuccessBtn) {
+      closeSuccessBtn.addEventListener('click', function (evt) {
+        var target = evt.target.closest('[data-close]');
+
+        if (!target) {
+          return;
+        }
+
+        closeSuccessMessage(form);
+      });
+    }
+  });
+};
+;// CONCATENATED MODULE: ./js/modules/init-page.js
+var initPage = function initPage() {
+  document.documentElement.classList.remove('no-js');
+};
 ;// CONCATENATED MODULE: ../node_modules/ssr-window/ssr-window.esm.js
 /**
  * SSR Window 4.0.2
@@ -15405,163 +15610,6 @@ var TESTIMONIALS_SLIDER_OPTIONS = {
     }
   }
 };
-;// CONCATENATED MODULE: ./js/utils/debounce.js
-var debounce = function debounce(func, wait, immediate) {
-  var timeout;
-  return function executedFunction() {
-    var context = this;
-    var args = arguments;
-
-    var later = function later() {
-      timeout = null;
-      if (!immediate) func.apply(context, args);
-    };
-
-    var callNow = immediate && !timeout;
-    clearTimeout(timeout);
-    timeout = setTimeout(later, wait);
-    if (callNow) func.apply(context, args);
-  };
-};
-;// CONCATENATED MODULE: ./components/toggler/toggler.js
-
-var SWITCHABLE_TOGGLER_CLASS = 'toggler--close';
-var RESIZE_DEBOUNCE_TIME = 300;
-var initToggler = function initToggler() {
-  var togglers = document.querySelectorAll('[data-toggler]');
-
-  var toggleTargetItem = function toggleTargetItem(evt) {
-    var target = evt.target.closest('[data-toggler]');
-
-    if (!target) {
-      return;
-    }
-
-    var targetId = target.dataset.targetId;
-    var className = target.dataset.targetClassToggle;
-    var targetEl = document.querySelector(".".concat(targetId));
-
-    if (!targetEl) {
-      return;
-    }
-
-    var watchResize = debounce(function () {
-      var windowWidth = window.innerWidth;
-
-      if (windowWidth >= 768) {
-        target.classList.remove(SWITCHABLE_TOGGLER_CLASS);
-        targetEl.classList.remove(className);
-        window.removeEventListener('resize', watchResize);
-      }
-    }, RESIZE_DEBOUNCE_TIME);
-
-    var toggleClasses = function toggleClasses(el, switchableClass) {
-      var isToggled = el.classList.contains(switchableClass);
-
-      if (isToggled) {
-        el.classList.remove(switchableClass);
-        target.classList.remove(SWITCHABLE_TOGGLER_CLASS);
-        return;
-      }
-
-      el.classList.add(switchableClass);
-      target.classList.add(SWITCHABLE_TOGGLER_CLASS);
-      window.addEventListener('resize', watchResize);
-    };
-
-    var onAnchorClickCloseMenu = function onAnchorClickCloseMenu(evt, nav, className, toggler) {
-      var anchor = evt.target.closest('[data-anchor]');
-
-      if (!anchor) {
-        return;
-      }
-
-      nav.classList.remove(className);
-      toggler.classList.remove(SWITCHABLE_TOGGLER_CLASS);
-      window.removeEventListener('resize', watchResize);
-    };
-
-    targetEl.addEventListener('click', function (evt) {
-      onAnchorClickCloseMenu(evt, targetEl, className, target);
-    });
-    toggleClasses(targetEl, className, target);
-  };
-
-  togglers.forEach(function (toggler) {
-    toggler.addEventListener('click', toggleTargetItem);
-  });
-};
-;// CONCATENATED MODULE: ./components/modal/modal.js
-var initModals = function initModals() {
-  var modals = document.querySelectorAll('[data-modal]');
-
-  if (!modals.length) {
-    return;
-  }
-
-  var myModal = new HystModal({
-    linkAttributeName: 'data-hystmodal',
-    waitTransitions: true
-  });
-};
-;// CONCATENATED MODULE: ./components/form/form.js
-var initPrivacyCheckbox = function initPrivacyCheckbox() {
-  var checkmark = document.querySelector('[data-checkmark]');
-  var checkbox = document.querySelector('#privacy');
-
-  if (!checkbox || !checkmark) {
-    return;
-  }
-
-  checkbox.addEventListener('change', function (evt) {
-    var checked = evt.target.checked;
-
-    if (checked) {
-      checkmark.classList.add('active');
-    } else {
-      checkmark.classList.remove('active');
-    }
-  });
-  checkbox.checked = true;
-  checkmark.classList.add('active');
-};
-var initForm = function initForm() {
-  var forms = document.querySelectorAll('.contact__form');
-
-  if (!forms.length) {
-    return;
-  }
-
-  var closeSuccessMessage = function closeSuccessMessage(formEl) {
-    var successMessage = formEl.querySelector('[data-success]');
-
-    if (!successMessage) {
-      return;
-    }
-
-    successMessage.classList.remove('active');
-  };
-
-  forms.forEach(function (form) {
-    var closeSuccessBtn = form.querySelector('[data-close]');
-
-    if (closeSuccessBtn) {
-      closeSuccessBtn.addEventListener('click', function (evt) {
-        var target = evt.target.closest('[data-close]');
-
-        if (!target) {
-          return;
-        }
-
-        closeSuccessMessage(form);
-      });
-    }
-  });
-};
-;// CONCATENATED MODULE: ./js/modules/init-page.js
-var initPage = function initPage() {
-  document.documentElement.classList.remove('no-js');
-};
 ;// CONCATENATED MODULE: ./js/modules/init-sliders.js
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
 
@@ -15666,16 +15714,13 @@ var initScrollTo = function initScrollTo() {
 
 
 
-
-
 document.addEventListener('DOMContentLoaded', function () {
   initPage();
   initToggler();
   initScrollTo();
   initModals();
-  initSliders(); // initTestimonialsSlider();
-  // initLegendsSlider();
-
+  initSliders();
+  initMainNav();
   initForm();
   initContactForm();
   initPrivacyCheckbox();

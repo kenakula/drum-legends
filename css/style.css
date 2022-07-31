@@ -1964,12 +1964,17 @@ svg:not(:root) {
   font-size: 1rem;
   line-height: 1.25rem;
   font-weight: 600;
+  transition: all 0.2s ease-in;
 }
 .main-nav__list li a:hover {
   opacity: 0.7;
 }
 .main-nav__list li a:active {
   opacity: 0.5;
+}
+.main-nav__list li a.active {
+  font-weight: 700;
+  font-size: 17px;
 }
 .main-nav.active .main-nav__list {
   opacity: 1;
