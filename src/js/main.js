@@ -1,7 +1,5 @@
 import { initContactForm } from '../blocks/contact/contact';
-import { initLegendsSlider } from '../blocks/legends/legends';
-import { initTestimonialsSlider } from '../blocks/testimonials/testimonials';
-import { initModals, initToggler } from '../components';
+import { initMainNav, initModals, initToggler } from '../components';
 import { initForm, initPrivacyCheckbox } from '../components/form/form';
 import { initPage } from './modules/init-page';
 import { initSliders } from './modules/init-sliders';
@@ -13,8 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initScrollTo();
   initModals();
   initSliders();
-  // initTestimonialsSlider();
-  // initLegendsSlider();
+  initMainNav();
   initForm();
   initContactForm();
   initPrivacyCheckbox();

@@ -24,6 +24,12 @@
         @include interactive-opacity;
         @include font(16, 20);
         font-weight: 600;
+        transition: all $default-transition-settings;
+
+        &.active {
+          font-weight: 700;
+          font-size: 17px;
+        }
       }
     }
   }
