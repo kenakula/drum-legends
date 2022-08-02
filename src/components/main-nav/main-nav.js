@@ -25,10 +25,12 @@ export const initMainNav = () => {
       const sectionId = entry.target.id;
       const link = mainNav.querySelector(`[data-target-id="${sectionId}"]`);
 
-      if (entry.isIntersecting) {
-        turnLinkActive(link);
-      } else {
-        link.classList.remove('active');
+      if (link) {
+        if (entry.isIntersecting) {
+          turnLinkActive(link);
+        } else {
+          link.classList.remove('active');
+        }
       }
     });
   };
