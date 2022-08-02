@@ -4470,10 +4470,12 @@ var initMainNav = function initMainNav() {
       var sectionId = entry.target.id;
       var link = mainNav.querySelector("[data-target-id=\"".concat(sectionId, "\"]"));
 
-      if (entry.isIntersecting) {
-        turnLinkActive(link);
-      } else {
-        link.classList.remove('active');
+      if (link) {
+        if (entry.isIntersecting) {
+          turnLinkActive(link);
+        } else {
+          link.classList.remove('active');
+        }
       }
     });
   };
